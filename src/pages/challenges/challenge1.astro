@@ -1,0 +1,22 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import NavBar from "@pages/components/NavBar.astro";
+import Footer from "@pages/components/Footer.astro";
+import StarRating from "@components/challenge1/StarRating";
+---
+
+<Layout>
+  <NavBar />
+  <div class="flex flex-col h-full p-24 space-y-8 dark:bg-darkMode">
+    <h1 class="text-5xl font-bold text-center dark:text-white">Challange 1</h1>
+    <h3 class="text-2xl text-center dark:text-white">Star Rating</h3>
+    <p class="text-lg text-justify dark:text-white">
+      El "Start Rating" es un medidor de rainking que tiene la función de poder
+      calificar a través de un elemento interactuable un producto o servicio que
+      lo utilice, mostrando tanto su calificación el cual se refleja por las
+      estrellas y su valor del rating en dicho caso.
+    </p>
+    <StarRating client:load />
+  </div>
+  <Footer />
+</Layout>

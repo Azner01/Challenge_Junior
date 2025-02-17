@@ -1,0 +1,23 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import NavBar from "@pages/components/NavBar.astro";
+import Footer from "@pages/components/Footer.astro";
+import TicTacToe from "@components/challenge6/TicTacToe";
+---
+
+<Layout>
+  <NavBar />
+  <div class="flex flex-col p-24 space-y-8 dark:bg-darkMode">
+    <h1 class="text-5xl font-bold text-center dark:text-white">Challange 6</h1>
+    <h3 class="text-2xl text-center dark:text-white">Tic-Tac-Toe</h3>
+    <p class="text-lg text-justify dark:text-white">
+      El juego de Tic-Tac-Toe es un juego de mesa de dos personas en donde cada
+      jugador elige entre los círculos o las cruces, y luego empiezan a llenar
+      el tablero en uno en uno con su correspondiente simbolo escogido,
+      alternando entre los jugadores y ganando cuando sus simbolos hagan una
+      línea recta de 3.
+    </p>
+    <TicTacToe client:load />
+  </div>
+  <Footer />
+</Layout>

@@ -1,0 +1,19 @@
+import ChallengesComp from "@components/ChallengesComp";
+import { list } from "src/constants/ListChallenges";
+
+export default function ListChallengesComp() {
+  const challenges = list;
+  return (
+    <div class="p-8 pt-24">
+      {challenges.map((index) => (
+        <ChallengesComp
+          client:load
+          title={index.title}
+          url={index.url}
+          text={index.text}
+          key={index.id}
+        />
+      ))}
+    </div>
+  );
+}
