@@ -13,7 +13,7 @@ export default {
           light: 'white',
           dark: 'dark',        
         },
-        "darkMode": "#614b83"
+        "darkMode": "#24375c"
       }
     },
   },

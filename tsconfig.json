@@ -12,6 +12,7 @@
       "@modules/*": ["src/modules/*"],
       "@public/*": ["public/*"],
       "@pages/*": ["src/pages/*"],
+      "@src/*": ["src/*"]
     } 
   }
 }
