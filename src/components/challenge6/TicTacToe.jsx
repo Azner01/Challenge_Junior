@@ -1,6 +1,6 @@
 import ButtonXO from "@components/challenge6/ButtonXO";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function TicTacToe() {
   let initialBoard = [
@@ -19,8 +19,12 @@ export default function TicTacToe() {
   const [player, setPlayer] = useState("X");
   const [reset, setReset] = useState(false);
   const [board, setBoard] = useState(initialBoard);
+  const [winningPlayer, setWinningPlayer] = useState("X");
 
   //Condiciones para ganar
+  useEffect(() => {
+    winBoard;
+  });
   const winBoard = (board) => {
     const lines = [
       [0, 1, 2],
@@ -52,9 +56,12 @@ export default function TicTacToe() {
     }
   };
 
+  useEffect(() => {
+    winBoard(board);
+  });
+
   //Actualizar la casilla
   const boardMark = (id) => {
-    winBoard(board);
     if (win) {
       return;
     }
@@ -65,9 +72,9 @@ export default function TicTacToe() {
       return square;
     });
     setBoard(newBoard);
-    if (win) {
-      setBoard(player === "X" ? "O" : "X");
-    }
+    // if (win) {
+    //   setBoard(player === "X" ? "O" : "X");
+    // }
   };
 
   //Cambiar de jugador
@@ -76,8 +83,10 @@ export default function TicTacToe() {
     if (win === false) {
       if (player === "X") {
         setPlayer("O");
+        setWinningPlayer(player);
       } else {
         setPlayer("X");
+        setWinningPlayer(player);
       }
     }
   };
@@ -87,6 +96,8 @@ export default function TicTacToe() {
     setReset(true);
     setPlayer("X");
     setWin(false);
+    setWinningPlayer(false);
+
     const resetBoard = board.map((square) => {
       for (var id = 1; id <= square.id + 1; id++) {
         if ((square.value = !"")) {
@@ -98,7 +109,7 @@ export default function TicTacToe() {
     setBoard(resetBoard);
   };
 
-  console.log(win);
+  // console.log(win);
 
   return (
     <section className="grid p-4 space-y-4 bg-white border-4 border-black place-content-center">
@@ -126,7 +137,9 @@ export default function TicTacToe() {
         Reset
       </button>
       {win ? (
-        <h3 className="text-3xl text-center">El ganador es "{player}"</h3>
+        <h3 className="text-3xl text-center">
+          El ganador es "{winningPlayer}"
+        </h3>
       ) : (
         <h3 className="text-3xl text-center">Turno de "{player}"</h3>
       )}

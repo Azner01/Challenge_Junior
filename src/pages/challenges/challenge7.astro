@@ -1,0 +1,20 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import NavBar from "@pages/components/NavBar.astro";
+import Footer from "@pages/components/Footer.astro";
+import Timer from "@components/challenge7/Timer";
+---
+
+<Layout>
+  <NavBar />
+  <div class="flex flex-col p-24 space-y-8 dark:bg-darkMode">
+    <h1 class="text-5xl font-bold text-center dark:text-white">Challange 7</h1>
+    <h3 class="text-2xl text-center dark:text-white">Temporizador</h3>
+    <p class="text-lg text-justify dark:text-white">
+      El temporizador es capaz de hacer una cuenta regresiva segundo a segundo
+      al poner un cierto tiempo de horas, minutos y segundos.
+    </p>
+    <Timer client:load />
+  </div>
+  <Footer />
+</Layout>

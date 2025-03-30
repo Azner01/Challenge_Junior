@@ -1,0 +1,21 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import NavBar from "@pages/components/NavBar.astro";
+import Footer from "@pages/components/Footer.astro";
+import To_Do_List from "@components/challenge4/To_Do_List";
+---
+
+<Layout>
+  <NavBar />
+  <div class="grid justify-center p-24 pb-40 space-y-8 dark:bg-darkMode">
+    <h1 class="text-5xl font-bold text-center dark:text-white">Challange 4</h1>
+    <h3 class="text-2xl text-center dark:text-white">To Do List</h3>
+    <p class="text-lg text-justify dark:text-white">
+      Aplicación básica de un CRUD, almacenando los datos en el "Local Storage"
+      para su despliegue, también con función de filtro para encontrar cierto
+      elementos en concreto.
+    </p>
+    <To_Do_List client:only />
+  </div>
+  <Footer />
+</Layout>
