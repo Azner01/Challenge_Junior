@@ -2,20 +2,19 @@
 import Layout from "src/layouts/Layout.astro";
 import NavBar from "@pages/components/NavBar.astro";
 import Footer from "@pages/components/Footer.astro";
-import Typeahead from "@components/challenge3/Typeahead";
+import ProgressBar from "@components/challenge5/ProgressBar";
 ---
 
 <Layout>
   <NavBar />
   <div class="flex flex-col p-24 pb-40 space-y-8 dark:bg-darkMode">
     <h1 class="text-5xl font-bold text-center dark:text-white">Challange 3</h1>
-    <h3 class="text-2xl text-center dark:text-white">Autocompletado</h3>
+    <h3 class="text-2xl text-center dark:text-white">Barra de Progreso</h3>
     <p class="text-lg text-justify dark:text-white">
-      El diseño de un componente que permite no solo mostrar una lista de datos
-      sino que permite sugerencia de ciertos datos según sea lo que se escriba
-      en la entrada de texto y así encontrar el adecuado.
+      Se trata de una barra de progreso que se podrá llenar automaticamente
+      según los parametros.
     </p>
-    <Typeahead client:load />
+    <ProgressBar client:load />
   </div>
   <Footer />
 </Layout>
