@@ -7,34 +7,46 @@ export default function Timer() {
   let [minutes, setMinutes] = useState(0);
   let [seconds, setSeconds] = useState(0);
   const [timerStarted, setTimerStarted] = useState(false);
+  let [totalTimeSeconds, setTotalTimeSeconds] = useState(0);
 
   useEffect(() => {
     let s = seconds;
     let m = minutes * 60;
     let h = hours * 3600;
-    // let totalTimeSeconds = seconds + minutes * 60 + hours * 3600;
-    let totalTimeSeconds = h + m + s;
-    // console.log(totalTimeSeconds);
     let intervalID;
-
-    if (timerStarted === true) {
+    //iniciar el tiempo
+    if (!timerStarted) {
+      setTotalTimeSeconds(h + m + s);
+    }
+    console.log(totalTimeSeconds);
+    if (timerStarted == true && totalTimeSeconds > 0) {
       intervalID = setInterval(() => {
-        totalTimeSeconds -= 1;
-        if (hours === 0 && minutes === 0 && seconds === 0) {
-          setTimerStarted(false);
-          return totalTimeSeconds;
-        }
-        setHours(Math.floor(totalTimeSeconds / 3600));
-        setMinutes(Math.floor((totalTimeSeconds % 3600) / 60));
-        setSeconds(totalTimeSeconds % 60);
-        return totalTimeSeconds;
+        setTotalTimeSeconds((prevTime) => {
+          const totalTime = prevTime - 1;
+
+          //poner los números de la hora, minutos y segundos
+          setHours(Math.floor(totalTime / 3600));
+          setMinutes(Math.floor((totalTime % 3600) / 60));
+          setSeconds(totalTime % 60);
+
+          if (totalTime <= 0) {
+            clearInterval(intervalID);
+            setTimerStarted(false);
+            return 0;
+          }
+          return totalTime;
+        });
       }, 1000);
-    } else {
+    } else if (timerStarted && totalTimeSeconds <= 0) {
       setTimerStarted(false);
     }
-  });
-
-  // console.log(seconds);
+    //limpiar internalID
+    return () => {
+      if (intervalID) {
+        clearInterval(intervalID);
+      }
+    };
+  }, [timerStarted, totalTimeSeconds, hours, minutes, seconds]);
 
   const changeHour = (e) => {
     setHours(e.target.value);
@@ -58,14 +70,14 @@ export default function Timer() {
 
   const resetFunction = () => {
     setTimerStarted(false);
-    useState(0);
+    setTotalTimeSeconds(0);
     setHours(0);
     setMinutes(0);
     setSeconds(0);
   };
 
   return (
-    <div class="p-8 pt-24 flex gap-2 border-4">
+    <div className="flex gap-2 p-8 mt-12 border-4 place-content-center">
       <section className="grid items-center justify-center p-20 bg-white place-content-center">
         <div className="flex">
           <InputTime

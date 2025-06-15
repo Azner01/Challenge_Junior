@@ -81,13 +81,8 @@ export default function TicTacToe() {
   const movePlayer = () => {
     setReset(false);
     if (win === false) {
-      if (player === "X") {
-        setPlayer("O");
-        setWinningPlayer(player);
-      } else {
-        setPlayer("X");
-        setWinningPlayer(player);
-      }
+      setPlayer(player === "X" ? "O" : "X");
+      setWinningPlayer(player);
     }
   };
 

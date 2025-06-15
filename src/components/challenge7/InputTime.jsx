@@ -9,7 +9,7 @@ export default function InputTime({
       <input
         type="text"
         className={"h-24 text-3xl text-center " + classPlus}
-        minLength="1"
+        minLength={"1"}
         maxLength={lenghtNum}
         value={timeNumber}
         onChange={changeEvent}

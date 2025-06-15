@@ -57,13 +57,6 @@ export default function To_Do_List() {
   const updateFn = (id) => {
     setShowUpdate(true);
     setIdUpdate(id);
-    // let idString = id.toString();
-    // let updateData = Object.entries(items)
-    //   .filter(([key, value]) => key !== idString)
-    //   .map(([key, value]) => value);
-    // console.log(updateData);
-    // localStorage.setItem("Tasks", JSON.stringify(updateData));
-    // setItems(updateData);
   };
 
   const deleteData = (id) => {

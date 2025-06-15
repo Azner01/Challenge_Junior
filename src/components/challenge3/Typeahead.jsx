@@ -8,8 +8,6 @@ export default function Typeahead() {
   const [country, setCountry] = useState("");
   const [selectCountry, setSelectCountry] = useState("");
 
-  //   console.log(country);
-
   const changeCountry = (e) => {
     setCountry(e.target.value);
   };
@@ -37,7 +35,6 @@ export default function Typeahead() {
       <div className="grid justify-center p-6 bg-white border-4 border-black dark:border-white">
         <input
           onClick={showList}
-          //   onBlur={hideList}
           value={country}
           type="text"
           onChange={changeCountry}

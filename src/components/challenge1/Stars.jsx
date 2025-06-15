@@ -4,11 +4,7 @@ export default function Stars({ num, rating, value, fixed, fixedState }) {
   const [Star, setStar] = useState(false);
 
   useEffect(() => {
-    if (rating < num) {
-      setStar(false);
-    } else {
-      setStar(true);
-    }
+    setStar(rating < num ? false : true);
   });
 
   const On = () => {

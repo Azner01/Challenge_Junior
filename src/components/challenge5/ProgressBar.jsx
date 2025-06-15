@@ -13,12 +13,7 @@ export default function ProgressBar() {
     if (stopTimer) {
       countInterval = setInterval(() => {
         setProgressNum((num) => {
-          if (num < 100) {
-            return num + 1;
-          } else {
-            setStopTimer(false);
-            return num;
-          }
+          return num < 100 ? num + 1 : num;
         });
       }, timer);
     }
@@ -32,28 +27,15 @@ export default function ProgressBar() {
   };
 
   const SwitchStop = () => {
-    if (stateText == "Parar") {
-      setStateText("Seguir");
-      setStopTimer(false);
-    } else {
-      setStateText("Parar");
-      setStopTimer(true);
-    }
+    setStateText(stateText == "Parar" ? "Seguir" : "Parar");
+    setStopTimer(stateText == "Parar" ? false : true);
   };
 
   const ProgressBar = () => {
-    if (stopTimer == false) {
-      setStopTimer(true);
-      if (stateText == "Seguir") {
-        Reset();
-        setStateText("Parar");
-        setStopTimer(true);
-      }
-    } else {
-      Reset();
-      setStateText("Parar");
-      setStopTimer(true);
-    }
+    setStopTimer(true);
+    Reset();
+    setStateText("Parar");
+    setStopTimer(true);
   };
 
   const changeTimer = (event) => {
